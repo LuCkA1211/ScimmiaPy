@@ -2,7 +2,7 @@ from model.Game import Game
 from model.AIPointGameSelectCardFactory import AIPointGameSelectCardFactory
 from model.AIPlayer import AIPlayer
 
-class StandardGame(Game):
+class PointGame(Game):
 
     __pointsToWin = 100
 
@@ -10,9 +10,9 @@ class StandardGame(Game):
         super().__init__(player, deckDesc, difficulty, numberCardsToDraw, penalty)
         factory = AIPointGameSelectCardFactory()
         aiPlayer = AIPlayer("AI1", factory, difficulty)
-        self._players.append(aiPlayer)
+        self.players.append(aiPlayer)
         self.__playerPoints = {}
-        for p in self._players:
+        for p in self.players:
             self.__playerPoints[p] = 0
     
     @property
@@ -24,12 +24,15 @@ class StandardGame(Game):
         self.__playerPoints = playerPoints
 
     def updatePlayerPoints(self, player, pointsToRemove):
-        self.__playerPoints[self.currentPlayer] = self.__playerPoints.get(self.currentPlayer) + pointsToRemove
+        self.__playerPoints[player] = self.__playerPoints.get(player) + pointsToRemove
     
     def updatePoints(self):
-        if(self._currentPlayer.hasPlayed()):
-            playedCard = self._table.faceUpCard()
-            self.updatePlayerPoints(self._currentPlayer, playedCard.value())
+        if(self.currentPlayer.hasPlayed):
+            playedCard = self.table.faceUpCard
+            self.updatePlayerPoints(self._currentPlayer, playedCard.value)
     
     def getSpecificPlayerPoints(self, player):
         return self.__playerPoints.get(player)
+    
+    def checkEndGame(self):
+        pass

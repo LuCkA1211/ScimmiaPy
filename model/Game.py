@@ -37,7 +37,7 @@ class Game(ABC):
         return self._table
     
     @table.setter
-    def players(self, table):
+    def table(self, table):
         self._table = table
 
     @property
@@ -95,10 +95,10 @@ class Game(ABC):
         self.assignOrderPlayers()
         self.giveStartingCards()
         self._table.setFirstPlayableCard()
-        return self._table.faceUpCard()
+        return self._table.faceUpCard
     
     def getFaceUpCard(self):
-        return self._table.faceUpCard()
+        return self._table.faceUpCard
     
     @abstractmethod
     def checkEndGame(self):
@@ -106,9 +106,9 @@ class Game(ABC):
 
     def assignPlayer(self):
         self._currentPlayer = self._players[self._indexPlayer]
-        self._currentPlayer.hasPlayed(False)
+        self._currentPlayer.hasPlayed = False
         self._nextPlayer = self._players[(self._indexPlayer + 1) % len(self._players)]
-        return self._currentPlayer.nickname()
+        return self._currentPlayer.nickname
     
     def getCardsInHand(self):
         return self._currentPlayer.getCardsInHand()
@@ -122,25 +122,25 @@ class Game(ABC):
     
     def activateEffect(self):
         faceUpCard = self.getFaceUpCard()
-        deck = self._table.deck()
+        deck = self._table.deck
         self._cardEffectActivator.applyEffect(faceUpCard, self._currentPlayer, self._nextPlayer, deck)
     
     def draw(self):
         cardsDrawn = self._drawRule.draw()
-        if(self._currentPlayer.hasPlayed()):
+        if(self._currentPlayer.hasPlayed):
             self.activateEffect()
         return cardsDrawn
     
     def passTurn(self):
-        self._currentPlayer.hasTakenTurn(False)
+        self._currentPlayer.hasTakenTurn = False
         self._indexPlayer = (self._indexPlayer + 1) % len(self._players)
         self.checkEndGame()
     
     def hasCurrentPlayerTakenTurn(self):
-        return self._currentPlayer.hasTakenTurn()
+        return self._currentPlayer.hasTakenTurn
 
     def hasCurrentPlayerPlayed(self):
-        return self._currentPlayer.hasPlayed()
+        return self._currentPlayer.hasPlayed
     
     def getNumberOfCardsInHand(self):
         numbercardsInHandPlayer = {}

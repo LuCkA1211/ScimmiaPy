@@ -1,4 +1,9 @@
-from model import Card, SkipCard, SwapCard, Draw2Card, Draw4Card, NormalCard
+from model.Card import Card
+from model.SkipCard import SkipCard
+from model.SwapCard import SwapCard
+from model.Draw2Card import Draw2Card
+from model.Draw4Card import Draw4Card
+from model.NormalCard import NormalCard
 from model.DeckDescription import DeckDescription
 import random
 
@@ -18,19 +23,19 @@ class Deck:
                     nc = NormalCard(i, color)
                     self.__cardsInDeck.append(nc)
         
-        for k in range(self.__deckDesc.numberDraw2()):
+        for k in range(self.__deckDesc.numberDraw2):
             d2c = Draw2Card()
             self.__cardsInDeck.append(d2c)
         
-        for k in range(self.__deckDesc.numberDraw4()):
+        for k in range(self.__deckDesc.numberDraw4):
             d4c = Draw4Card()
             self.__cardsInDeck.append(d4c)
 
-        for k in range(self.__deckDesc.numberDraw2()):
+        for k in range(self.__deckDesc.numberSkip):
             skip = SkipCard()
             self.__cardsInDeck.append(skip)
 
-        for k in range(self.__deckDesc.numberDraw2()):
+        for k in range(self.__deckDesc.numberSwap):
             swap = SwapCard()
             self.__cardsInDeck.append(swap)
         
@@ -51,3 +56,12 @@ class Deck:
         if(not(any(self.__cardsInDeck))):
             return None
         return self.__cardsInDeck.pop()
+    
+    def drawCards(self, cardsToDraw):
+        cardsDrawn = []
+        if(len(self.cardsInDeck) < cardsToDraw):
+            cardsToDraw = len(self.cardsInDeck)
+        for i in range(cardsToDraw):
+            c = self.getTopCard()
+            cardsDrawn.append(c)
+        return cardsDrawn

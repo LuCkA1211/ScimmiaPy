@@ -10,3 +10,6 @@ class NormalCard(Card):
     
     def descriptionEffect(self):
         return "Questa carta non ha particolari effetti"
+    
+    def effect(self, currentPlayer, nextPlayer, deck):
+        pass

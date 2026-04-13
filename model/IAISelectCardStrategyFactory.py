@@ -1,7 +1,4 @@
-from abc import ABC, abstractmethod
+class IAISelectCardStrategyFactory():
 
-class IAISelectCardStrategyFactory(ABC):
-
-    @abstractmethod
     def createStrategy(self, difficulty):
         pass

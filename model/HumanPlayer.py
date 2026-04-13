@@ -7,12 +7,12 @@ class HumanPlayer(Player):
         super().__init__(nickname)
     
     def playCardFromIndex(self, indexCardPlay, table):
-        cardToBePlayed = self.__hand.getCardFromIndex(indexCardPlay)
+        cardToBePlayed = self.hand.getCardFromIndex(indexCardPlay)
         self.playCard(cardToBePlayed, table)
     
     def clearHand(self):
-        self.__hand = Hand()
+        self.hand = Hand()
     
     def clearTurnState(self):
-        self.__hasPlayed = False
-        self.__hasTakenTurn = False
+        self.hasPlayed = False
+        self.hasTakenTurn = False

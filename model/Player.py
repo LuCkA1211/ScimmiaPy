@@ -13,7 +13,7 @@ class Player(ABC):
     def hand(self):
         return self.__hand
     
-    @hand.property
+    @hand.setter
     def hand(self, hand):
         self.__hand = hand
     
@@ -21,7 +21,7 @@ class Player(ABC):
     def nickname(self):
         return self.__nickname
     
-    @nickname.property
+    @nickname.setter
     def nickname(self, nickname):
         self.__nickname = nickname
 
@@ -29,7 +29,7 @@ class Player(ABC):
     def hasPlayed(self):
         return self.__hasPlayed
     
-    @hasPlayed.property
+    @hasPlayed.setter
     def hasPlayed(self, hasPlayed):
         self.__hasPlayed = hasPlayed
     
@@ -37,7 +37,7 @@ class Player(ABC):
     def hasTakenTurn(self):
         return self.__hasTakenTurn
 
-    @hasTakenTurn.property
+    @hasTakenTurn.setter
     def hasTakenTurn(self, hasTakenTurn):
         self.__hasTakenTurn = hasTakenTurn
     
@@ -53,18 +53,18 @@ class Player(ABC):
         self.__hasTakenTurn = True
 
     def getPlayableCards(self, table):
-        faceUpCard = table.faceUpCard()
-        self.__hand.lastFaceUpCard(faceUpCard)
+        faceUpCard = table.faceUpCard
+        self.__hand.lastFaceUpCard = faceUpCard
         return self.getPlayableCardsFromHand()
     
     def getCardsInHand(self):
-        return self.__hand.cardsInHand()
+        return self.__hand.cardsInHand
     
     def getPlayableCardsFromHand(self):
-        return self.__hand.playableCards()
+        return self.__hand.playableCards
     
     def setCardsInHand(self, cards):
-        self.__hand.cardsInHand(cards)
+        self.__hand.cardsInHand = cards
     
     def drawCard(self, table):
         drawnCard = table.drawCardFromDeck()
@@ -85,12 +85,12 @@ class Player(ABC):
             self.playCard(drawnCard, table)
     
     def noCardsInHand(self):
-        return any(self.__hand.cardsInHand())
+        return any(self.__hand.cardsInHand)
     
     def numberCardsInHand(self):
-        return len(self.__hand.cardsInHand())
+        return len(self.__hand.cardsInHand)
     
     def getLastFaceUpCard(self):
-        return self.__hand.lastFaceUpCard()
+        return self.__hand.lastFaceUpCard
     
     

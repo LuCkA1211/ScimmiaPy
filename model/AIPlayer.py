@@ -16,5 +16,5 @@ class AIPlayer(Player):
     
     def playCardFromIndex(self, indexCard, table):
         indexCardPlay = self.__selectCardStrategy.selectCardToPlay(self)
-        cardToPlay = self.__hand.getCardFromIndex(indexCardPlay)
+        cardToPlay = self.hand.getCardFromIndex(indexCardPlay)
         self.playCard(cardToPlay, table)

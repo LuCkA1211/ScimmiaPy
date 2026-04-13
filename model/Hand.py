@@ -50,7 +50,14 @@ class Hand:
             return False
         if(self.__lastFaceUpCard.color == "Black"):
             return True
-        faceUpCardColor = self.__lastFaceUpCard.color()
-        faceUpCardValue = self.__lastFaceUpCard.value()
-        if((card.color() == faceUpCardColor) or (card.value() == faceUpCardValue) or (not(isinstance(card, NormalCard)))):
+        faceUpCardColor = self.__lastFaceUpCard.color
+        faceUpCardValue = self.__lastFaceUpCard.value
+        if((card.color == faceUpCardColor) or (card.value == faceUpCardValue) or (not(isinstance(card, NormalCard)))):
             return True
+    
+    def updatePlayableCards(self):
+        updatedPlayableCards = []
+        for c in self.__cardsInHand:
+            if(self.isPlayable(c)):
+                updatedPlayableCards.append(c)
+        self.playableCards = updatedPlayableCards

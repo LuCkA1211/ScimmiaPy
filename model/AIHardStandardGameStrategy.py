@@ -40,30 +40,30 @@ class AIHardStandardGameStrategy(IAISelectCardStrategy):
 
     def splitPlayableCards(self, playableCards, playableCardsForColor, playableCardsForValue, lastFaceUpCard):
         for c in playableCards:
-            if c.color() == lastFaceUpCard.color():
+            if c.color() == lastFaceUpCard.color:
                 playableCardsForColor.append(c)
-            if c.value() == lastFaceUpCard.value():
+            if c.value() == lastFaceUpCard.value:
                 playableCardsForValue.append(c)
 
     def computeOccurencies(self, colorCardsInHandDict, valueCardsInHandDict, cardsInHand):
         for c in cardsInHand:
-            color = c.color()
-            value = c.value()
+            color = c.color
+            value = c.value
 
             colorCardsInHandDict[color] = colorCardsInHandDict.get(color, 0) + 1
             valueCardsInHandDict[value] = valueCardsInHandDict.get(value, 0) + 1
 
     def splitPlayableCards(self, playableCards, playableCardsForColor, playableCardsForValue, lastFaceUpCard):
         for c in playableCards:
-            if(c.color() == lastFaceUpCard.color()):
+            if(c.color() == lastFaceUpCard.color):
                 playableCardsForColor.append(c)
-            if(c.value() == lastFaceUpCard.value()):
+            if(c.value() == lastFaceUpCard.value):
                 playableCardsForValue.append(c)
     
     def computeOccurencies(self, colorCardsInHandDict, valueCardsInHandDict, cardsInHand):
         for c in cardsInHand:
-            color = c.color()
-            value = c.value()
+            color = c.color
+            value = c.value
 
             colorCardsInHandDict[color] = colorCardsInHandDict.get(color, 0) + 1
             valueCardsInHandDict[value] = valueCardsInHandDict.get(value, 0) + 1

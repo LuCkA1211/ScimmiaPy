@@ -33,10 +33,10 @@ class Table:
     
     def setFirstPlayableCard(self):
         firstPlayableCard = self.__deck.getTopCard()
-        self.faceUpCard(firstPlayableCard)
+        self.faceUpCard = firstPlayableCard
     
     def playCard(self, card):
-        self.faceUpCard(card)
+        self.faceUpCard = card
     
     def getNumberOfCardsInDeck(self):
-        return len(self.__deck.getCardsInDeck())
+        return len(self.__deck.cardsInDeck)
